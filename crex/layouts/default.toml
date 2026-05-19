@@ -1,0 +1,22 @@
+# cmux-resurrect layout: default
+# Saved at: 2026-04-13T06:24:26Z
+
+name = 'default'
+version = 1
+saved_at = 2026-04-13T06:24:26.726909Z
+
+[[workspace]]
+title = 'LEARN'
+cwd = '/Users/yushi/note'
+pinned = true
+index = 0
+active = true
+
+[[workspace.pane]]
+type = 'terminal'
+
+[[workspace.pane]]
+type = 'terminal'
+split = 'right'
+focus = true
+index = 1

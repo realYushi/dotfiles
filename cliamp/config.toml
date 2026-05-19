@@ -1,0 +1,7 @@
+theme = "catppuccin-latte"
+repeat = "Off"
+eq_preset = "Custom"
+eq = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[ytmusic]
+client_id = "<YOUR_GOOGLE_OAUTH_CLIENT_ID>"
+client_secret = "<YOUR_GOOGLE_OAUTH_CLIENT_SECRET>"

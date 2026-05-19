@@ -1,0 +1,117 @@
+;; ~/.config/kanata/kanata.kbd
+;; Migrated from Karabiner-Elements config.
+;; Covers: home-row mods, semicolon symbol layer, caps=esc/hyper, hyper+hjkl arrows.
+;; NOT covered (kanata limitations on macOS): per-device remaps and
+;; "disable_built_in_keyboard_if_exists". See notes at bottom.
+
+(defcfg
+  process-unmapped-keys yes
+  concurrent-tap-hold yes
+  ;; danger-enable-cmd yes   ;; uncomment if you later want shell commands
+
+  ;; Only remap the built-in MacBook keyboard. External keyboards pass through
+  ;; unmodified. Run `kanata --list` to see device names; you can also use the
+  ;; hash (e.g. "0x22348D7431C177B") instead of the name if you prefer.
+  macos-dev-names-include (
+    "Apple Internal Keyboard / Trackpad"
+  )
+  ;; Defensive exclude: if the include list above ever fails to match (driver
+  ;; hiccup, macOS rename), kanata falls back to grabbing every keyboard. The
+  ;; Keychron and the virtual HID keyboard are listed so that fallback can
+  ;; never produce broken behavior on those devices.
+  macos-dev-names-exclude (
+    "Keychron K11 Max"
+    "Karabiner DriverKit VirtualHIDKeyboard 1.8.0"
+  )
+)
+
+(defvar
+  tap-time  200
+  hold-time 150
+  sym-tap   150
+
+  ;; "trigger" key sets for tap-hold-release-keys: pressing one of these
+  ;; while a home-row mod is held resolves the mod-key as a TAP (lets you
+  ;; roll same-side keys without firing the modifier).
+  left-side  (q w e r t a s d f g z x c v b)
+  right-side (y u i o p h j k l ; n m , . /)
+)
+
+(defalias
+  ;; ── home-row mods ──────────────────────────────────────────────
+  ha (tap-hold-release-keys $tap-time $hold-time a lctl $left-side)
+  hs (tap-hold-release-keys $tap-time $hold-time s lalt $left-side)
+  hd (tap-hold-release-keys $tap-time $hold-time d lmet $left-side)
+  hf (tap-hold-release-keys $tap-time $hold-time f lsft $left-side)
+  hj (tap-hold-release-keys $tap-time $hold-time j lsft $right-side)
+  hk (tap-hold-release-keys $tap-time $hold-time k rmet $right-side)
+  hl (tap-hold-release-keys $tap-time $hold-time l ralt $right-side)
+
+  ;; ── dual-role keys ─────────────────────────────────────────────
+  hsem (tap-hold-release $sym-tap   $hold-time ; (layer-while-held sym))
+  hcap (tap-hold-release $tap-time  $hold-time esc (layer-while-held hyper))
+
+  ;; ── sym-layer paired keys: single tap / double tap ────────────
+  ;; q: ( / )
+  sq (tap-dance 200 (S-9 S-0))
+  ;; b: { / }
+  sb (tap-dance 200 (S-[ S-]))
+  ;; j: [ / ]
+  sj (tap-dance 200 ([ ]))
+
+  ;; cmd+z and ctrl+space (lang switch)
+  sz (multi lmet z)
+  so (multi lctl spc)
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lalt lmet           spc            rmet ralt
+)
+
+(deflayer base
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @hcap @ha @hs  @hd  @hf  g    h    @hj  @hk  @hl  @hsem '   ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lalt lmet           spc            rmet ralt
+)
+
+;; SYM layer = while semicolon is held
+;; Mappings copied from Karabiner: q=( w=# e=^ r=& t=~/4spc y=@ u=$ i=: o=lang
+;;                                  a=* s=< d== f=> g=! h=% j=[/] k=` l="
+;;                                  z=cmd+z x=_ c=. v=| b={/} n=- m=+
+;;                                  spc=enter
+(deflayer sym
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    @sq  S-3 S-6 S-7 S-grv S-2  S-4  S-;  @so  _    _    _    _
+  _    S-8  S-,  =    S-.  S-1  S-5  @sj  grv  S-'  _    _    ret
+  _    @sz  S--  .    S-\  @sb  -    S-=  _    _    _    _
+  _    _    _              ret            _    _
+)
+
+;; HYPER layer = while caps lock is held; just hjkl → arrows.
+(deflayer hyper
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    left down up   rght _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _
+)
+
+;; ─────────────────────────────────────────────────────────────────
+;; NOTES — division of labor with Karabiner-Elements
+;; ─────────────────────────────────────────────────────────────────
+;; This config handles the built-in MacBook keyboard ONLY. Per-device
+;; remaps (8BitDo Micro gamepad, any other USB device-specific rules)
+;; live in Karabiner-Elements, which has native `device_if`, IOKit
+;; hotplug awareness, and disable_built_in_keyboard_if_exists — features
+;; kanata 1.11 lacks on macOS.
+;;
+;; Why not run a second kanata instance per device: kanata's macOS
+;; include-matching falls back to "grab all" when no device matches,
+;; so a per-device instance leaks onto every other keyboard whenever
+;; its target device is unplugged. See src/oskbd/macos.rs:101.

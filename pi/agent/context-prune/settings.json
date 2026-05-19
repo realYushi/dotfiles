@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "showPruneStatusLine": true,
+  "summarizerModel": "openai-codex/gpt-5.4-mini",
+  "summarizerThinking": "default",
+  "pruneOn": "agentic-auto",
+  "remindUnprunedCount": true,
+  "batchingMode": "agent-message"
+}

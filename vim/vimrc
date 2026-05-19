@@ -1,0 +1,15 @@
+" Vim XDG Configuration
+set runtimepath^=$XDG_CONFIG_HOME/vim
+set runtimepath+=$XDG_CONFIG_HOME/vim/after
+set packpath^=$XDG_CONFIG_HOME/vim,$XDG_DATA_HOME/vim
+set packpath+=$XDG_DATA_HOME/vim/after,$XDG_CONFIG_HOME/vim/after
+
+let &directory = expand('$XDG_STATE_HOME/vim/swap//')
+let &backupdir = expand('$XDG_STATE_HOME/vim/backup//')
+let &undodir   = expand('$XDG_STATE_HOME/vim/undo//')
+let &viminfofile = expand('$XDG_STATE_HOME/vim/viminfo')
+
+" Ensure directories exist
+if !isdirectory(&directory) | call mkdir(&directory, 'p', 0700) | endif
+if !isdirectory(&backupdir) | call mkdir(&backupdir, 'p', 0700) | endif
+if !isdirectory(&undodir)   | call mkdir(&undodir, 'p', 0700)   | endif

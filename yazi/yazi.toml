@@ -1,0 +1,29 @@
+[mgr]
+ratio = [3, 3, 10]
+
+[preview]
+max_width = 2000
+max_height = 2400
+
+[opener]
+edit = [
+  { run = "${EDITOR:-vim} %s", desc = "edit", for = "unix", block = true },
+]
+
+[plugin]
+prepend_renderers = [
+  { url = "*", run = "git" },
+]
+
+prepend_previewers = [
+  { url = "**/.git/", run = "preview-git" },
+  { url = "*.md",     run = 'faster-piper --rely-on-preloader' },
+  { url = "*.tar*",   run = 'faster-piper --rely-on-preloader --format=url' },
+  { url = "*.txt.gz", run = 'faster-piper --rely-on-preloader' },
+]
+
+prepend_preloaders = [
+  { url = "*.md",     run = 'faster-piper -- CLICOLOR_FORCE=1 glow -w=$w -s=/Users/yushi/.config/glow/catppuccin-latte.json -- "$1"' },
+  { url = "*.tar*",   run = 'faster-piper -- tar tf "$1"' },
+  { url = "*.txt.gz", run = 'faster-piper -- gzip -dc "$1"' },
+]

@@ -1,0 +1,87 @@
+{
+  "lastChangelogVersion": "0.75.3",
+  "compaction": {
+    "enabled": true
+  },
+  "theme": "catppuccin-latte",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.4",
+  "defaultThinkingLevel": "high",
+  "packages": [
+    {
+      "source": "npm:pi-mcp-adapter",
+      "extensions": [
+        "+index.ts"
+      ]
+    },
+    {
+      "source": "npm:pi-markdown-preview",
+      "extensions": [
+        "-index.ts"
+      ]
+    },
+    {
+      "source": "npm:@juicesharp/rpiv-ask-user-question",
+      "extensions": [
+        "-index.ts"
+      ]
+    },
+    "npm:@juicesharp/rpiv-todo",
+    "npm:pi-btw",
+    {
+      "source": "npm:@plannotator/pi-extension",
+      "extensions": [
+        "-"
+      ],
+      "skills": [
+        "-skills/plannotator-annotate/SKILL.md",
+        "-skills/plannotator-compound/SKILL.md",
+        "-skills/plannotator-last/SKILL.md",
+        "-skills/plannotator-review/SKILL.md",
+        "-skills/plannotator-setup-goal/SKILL.md",
+        "-skills/plannotator-visual-explainer/SKILL.md"
+      ]
+    },
+    "npm:pi-rtk-optimizer",
+    "npm:@tintinweb/pi-subagents",
+    "npm:@ff-labs/pi-fff",
+    "npm:pi-context-prune",
+    {
+      "source": "npm:pi-mono-multi-edit",
+      "extensions": [
+        "-index.ts"
+      ]
+    },
+    "npm:@howaboua/pi-codex-conversion",
+    "npm:pi-tool-display",
+    "npm:pi-rewind"
+  ],
+  "enableInstallTelemetry": false,
+  "quietStartup": true,
+  "collapseChangelog": true,
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "images": {
+    "blockImages": false
+  },
+  "editorPaddingX": 1,
+  "skills": [
+    "-../../.agents/skills/browser-trace/SKILL.md",
+    "-../../.agents/skills/codex/SKILL.md",
+    "-../../.agents/skills/dogfood/SKILL.md",
+    "-../../.agents/skills/find-skills/SKILL.md",
+    "-../../.agents/skills/grill-with-docs/SKILL.md",
+    "-../../.agents/skills/heroui-react/SKILL.md",
+    "-../../.agents/skills/humanizer/SKILL.md",
+    "-../../.agents/skills/impeccable/SKILL.md",
+    "-../../.agents/skills/openrouter-images/SKILL.md",
+    "-../../.agents/skills/shadcn/SKILL.md",
+    "-../../.agents/skills/skill-creator/SKILL.md",
+    "-../../.agents/skills/agent-browser/SKILL.md"
+  ],
+  "hideThinkingBlock": true,
+  "warnings": {
+    "anthropicExtraUsage": true
+  }
+}

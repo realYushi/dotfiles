@@ -1,0 +1,98 @@
+theme:
+  activeBorderColor:
+    - '#8839ef'
+    - bold
+  inactiveBorderColor:
+    - '#6c6f85'
+  optionsTextColor:
+    - '#1e66f5'
+  selectedLineBgColor:
+    - '#ccd0da'
+  cherryPickedCommitBgColor:
+    - '#bcc0cc'
+  cherryPickedCommitFgColor:
+    - '#8839ef'
+  unstagedChangesColor:
+    - '#d20f39'
+  defaultFgColor:
+    - '#4c4f69'
+  searchingActiveBorderColor:
+    - '#df8e1d'
+authorColors:
+  '*': '#7287fd'
+customCommands:
+  - key: "C"
+    context: "files"
+    description: "Generate commit message with Claude Code"
+    command: "git diff --staged | /opt/homebrew/bin/claude -p 'Generate a concise git commit message for these staged changes. Output ONLY the raw commit message with no markdown, no code blocks, no backticks, no explanations. Use conventional commit format.' --model haiku --output-format text > /tmp/commit_msg && GIT_EDITOR=$EDITOR git  commit -e -F /tmp/commit_msg"
+    output: terminal
+  - key: "u"
+    context: "commits"
+    description: "Undo last commit (soft reset)"
+    command: "git reset --soft HEAD~1"
+    output: log
+    prompts:
+      - type: confirm
+        title: "Undo last commit"
+        body: "Soft-reset the last commit? Changes will stay staged."
+  - key: "a"
+    context: "commits"
+    description: "Amend last commit (no edit)"
+    command: "git commit --amend --no-edit"
+    output: log
+    prompts:
+      - type: confirm
+        title: "Amend last commit"
+        body: "Amend the last commit with currently staged changes?"
+  - key: "r"
+    context: "commits"
+    description: "Interactive rebase from selected commit"
+    command: "git rebase -i {{commitHash}}^"
+    output: terminal
+  - key: "y"
+    context: "commits"
+    description: "Copy commit hash to clipboard"
+    command: "echo -n {{commitHash}} | pbcopy"
+    output: log
+  - key: "p"
+    context: "files"
+    description: "Stash pop"
+    command: "git stash pop"
+    output: log
+  - key: "P"
+    context: "files"
+    description: "Create pull request"
+    command: "gh pr create --fill"
+    output: terminal
+gui:
+  nerdFontsVersion: "3"
+  showIcons: true
+  spinnerRate: 50
+  sidePanelWidth: 0.25
+  expandFocusedSidePanel: true
+  showRandomTip: false
+  showBottomLine: false
+  scrollHeight: 2
+  skipDiscardChangeWarning: true
+  commandLogSize: 0.5
+  border: single
+os:
+  edit: 'nvim -c "Gitsigns diffthis" {{filename}}'
+  editInTerminal: true
+git:
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never
+  autoFetch: true
+  autoRefresh: true
+  parseEmoji: true
+  branchLogCmd: git log --graph --color=always --oneline --decorate {{branchName}} --
+  allBranchesLogCmds:
+    - git log --graph --color=always --oneline --decorate --all
+refresher:
+  refreshInterval: 10
+  fetchInterval: 300
+update:
+  method: never
+notARepository: quit
+promptToReturnFromSubprocess: false

@@ -1,0 +1,74 @@
+model_reasoning_effort = "xhigh"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+check_for_update_on_startup = false
+suppress_unstable_features_warning = true
+
+[mcp_servers]
+
+[mcp_servers.moor]
+type = "http"
+url = "http://127.0.0.1:9223/mcp"
+headers = { X-Profile-Id = "9182a09f-e939-4da2-a917-ec4d85140937" }
+
+[mcp_servers.moor.http_headers]
+X-Profile-Id = "9182a09f-e939-4da2-a917-ec4d85140937"
+
+[tui]
+status_line = [ "model-name", "context-used", "git-branch", "current-dir" ]
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
+[analytics]
+enabled = false
+
+[feedback]
+enabled = false
+
+[features]
+hooks = true
+
+[projects."/Users/yushi/work/ASV-Redesign"]
+trust_level = "trusted"
+
+[projects."/Users/yushi/.codex"]
+trust_level = "trusted"
+
+[hooks.state]
+
+[hooks.state."/Users/yushi/.codex/hooks.json:permission_request:0:0"]
+enabled = true
+trusted_hash = "sha256:6a34cba190445388020800d6e694a8a61ff4734e94c564976f22e885c71f4ba9"
+
+[hooks.state."/Users/yushi/.codex/hooks.json:pre_tool_use:0:0"]
+trusted_hash = "sha256:18576933129a317a96fa0fc8de336c18f778d17bb11ad296714b7e6ba9210503"
+
+[hooks.state."/Users/yushi/.codex/hooks.json:session_start:0:0"]
+enabled = true
+trusted_hash = "sha256:13d1ac3a063e35fa6337a769c64179df59806e8bed81159a773cb9e8629ec38a"
+
+[hooks.state."/Users/yushi/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:9730e678710781f3c6a9ff165f451001ecc6d95b18b4bc8ed42f6db92f284bee"
+
+[hooks.state."/Users/yushi/.codex/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:9561dc2cf7b9484d89eeb02fb3dacb0b9996cae4544fad9416bd3a121ca59cd1"
+
+[hooks.state."/Users/yushi/.codex/hooks.json:session_start:1:0"]
+enabled = true
+trusted_hash = "sha256:d4dd9acf46b02e16ccc8f939c3f2a66c1ea914a8d263e8ebb350d29af9262adc"
+[hooks.state."/Users/yushi/.codex/hooks.json:user_prompt_submit:1:0"]
+enabled = true
+trusted_hash = "sha256:945d383f54a1e1b35a4507263699a5e73fa54467dbb7bd6fe39f28b7305da435"
+[hooks.state."/Users/yushi/.codex/hooks.json:pre_tool_use:1:0"]
+enabled = true
+trusted_hash = "sha256:81826bae1cf759b9fec56280035ce61f46ebcdc2b665c5b6d5eb9494d38d8469"
+[hooks.state."/Users/yushi/.codex/hooks.json:permission_request:1:0"]
+enabled = true
+trusted_hash = "sha256:6c1076c9538f003edced62c9ecd64491ebac8f3b4c8a2ffafaa9b58240d38f03"
+[hooks.state."/Users/yushi/.codex/hooks.json:post_tool_use:0:0"]
+enabled = true
+trusted_hash = "sha256:906f5cac2ceb79aa4143463e23dfa2f6a1c30ee7f980be97c71b24822ee6f560"
+[hooks.state."/Users/yushi/.codex/hooks.json:stop:1:0"]
+enabled = true
+trusted_hash = "sha256:b10ce2dcc9d4690a850408ebba570803766d171e041947ef1e9d00c9bca77855"

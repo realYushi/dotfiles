@@ -1,0 +1,5 @@
+
+font-family = "0xProto Nerd Font Mono"
+font-size = 15
+theme = "catppuccin latte"
+adjust-cell-height = 5%

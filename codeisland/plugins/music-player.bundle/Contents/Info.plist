@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleExecutable</key>
+    <string>MusicPlugin</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.mioisland.plugin.music-player</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>Music Player</string>
+    <key>CFBundlePackageType</key>
+    <string>BNDL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>2.3.0</string>
+    <key>CFBundleVersion</key>
+    <string>12</string>
+    <key>NSPrincipalClass</key>
+    <string>MusicPlugin.MusicPlugin</string>
+    <!--
+        ═════════════════════════════════════════════════════════════
+        PANEL SIZE INTERFACE · TUNE HERE
+        ═════════════════════════════════════════════════════════════
+        Host reads these on plugin load and sizes the expanded area
+        accordingly. Default fallback is ~620×780 (too big for music).
+
+        Constraints:
+          Width:  280 – 1200
+          Height: 180 – 900
+
+        Current tuning (v2c "Play Split"):
+          Width  = 440
+          Height = 200   (40 notch strip + 20 top margin + 120 card
+                         + 20 bottom margin. The themed card sits in
+                         the middle with breathing room above and
+                         below, Island native dark showing in the
+                         notch strip and the side margins.)
+
+        Host clamp (NativePluginManager.swift:118, :151):
+          width  [280, 1200]
+          height [120, 900]
+          Outside range → nil → falls back to 620×780 default.
+
+        Host chrome (PluginContentView wraps every plugin panel):
+          ▸ .padding(.top, 20)                            → 20pt
+          ▸ Back-button header row (font 11 + 8/4 pad)    → ~27pt
+          ▸ Total chrome reserved at top                  → ~47pt
+
+        Layout (180pt vertical budget):
+          ▸ top margin (above card)                       → 40pt
+             - notch / camera module sits here
+             - floating back chip (y=12-38) lives here
+             - NO theme color in this band
+          ▸ card                                          → 120pt
+             - internal padding 14 top / 14 bottom        → 28pt
+             - inner content area                         → 92pt
+             - content: cover 48 + gap 14 + progress 30  → 92pt  ✓
+             - 0pt slack (content sized exactly to card)
+          ▸ bottom margin (below card)                    → 20pt
+
+        Card treatment:
+          ▸ rounded rect corner 14
+          ▸ fill: blurred album art + dark gradient overlay
+          ▸ stroke: white 0.12 opacity, 0.5pt hairline
+          ▸ outer margins 16pt horizontal,  so card width = 408pt
+
+        Result: themed card is CONTAINED inside the Island. Native
+        dark shows above, below, and beside the card. The physical
+        notch / camera module sits cleanly in the top margin band,
+        no music backdrop bleeds around it.
+
+        Design spec delivered (mostly verbatim) inside plugin area:
+          cover / meta / prev / play / next  (48pt cover, one row)
+          ━━━━━●─────────────────            (full-width seek)
+          0:00                    0:00        (times tnum)
+        ═════════════════════════════════════════════════════════════
+    -->
+    <key>MioPluginPreferredWidth</key>
+    <integer>440</integer>
+    <key>MioPluginPreferredHeight</key>
+    <integer>200</integer>
+</dict>
+</plist>

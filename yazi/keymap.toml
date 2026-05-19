@@ -1,0 +1,17 @@
+[mgr]
+prepend_keymap = [
+  { on = "e", run = "open", desc = "Edit or open selected files" },
+  { on = "o", run = "open", desc = "Edit or open selected files" },
+  { on = "<Enter>", run = "enter", desc = "Enter the child directory" },
+  { on = "f", run = "plugin jump-to-char", desc = "Jump to char" },
+]
+
+[plugin]
+prepend_keymap = [
+  { on = "<A-Up>",       run = "seek -1",      desc = "Scroll up" },
+  { on = "<A-Down>",     run = "seek +1",      desc = "Scroll down" },
+  { on = "<A-PageUp>",   run = "seek -15",     desc = "Scroll page up" },
+  { on = "<A-PageDown>", run = "seek +15",     desc = "Scroll page down" },
+  { on = "<A-Home>",     run = "seek -10000",  desc = "Scroll to the top" },
+  { on = "<A-End>",      run = "seek +10000",  desc = "Scroll to the bottom" },
+]

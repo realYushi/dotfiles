@@ -1,0 +1,508 @@
+# yaml-language-server: $schema=config.schema.yaml
+command_alias_start_index: 200
+keybindings:
+  root_table: C-Space
+  # C-Space is the primary menu trigger. C-b remains a backup tmux prefix, and
+  # the plugin still requires prefix_table to exist for generated bindings.
+  prefix_table: Space
+title:
+  style: align=centre,bold
+  prefix: tmux
+  prefix_style: fg=green,align=centre,bold
+position:
+  x: C
+  y: S
+custom_variables:
+  - name: log_info
+    value: "#[fg=green,italics] [info]#[default]#[italics]"
+macros:
+  - name: reload-config
+    commands:
+      - run-shell "$HOME/.config/tmux/bin/reload-config.sh"
+  - name: toggle-mouse
+    commands:
+      - set -g mouse
+      - display "#{log_info} mouse = #{?mouse,on,off}"
+  - name: toggle-status
+    commands:
+      - set -g status
+      - display "#{log_info} status = #{?status,on,off}"
+  - name: toggle-sync
+    commands:
+      - setw synchronize-panes
+      - display "#{log_info} synchronize-panes = #{?pane_synchronized,on,off}"
+  - name: toggle-activity
+    commands:
+      - setw monitor-activity
+      - display "#{log_info} monitor-activity = #{?monitor-activity,on,off}"
+  - name: toggle-zoom
+    commands:
+      - resize-pane -Z
+      - display "#{log_info} zoom = #{?window_zoomed_flag,on,off}"
+items:
+  # ==== Navigation (fast jumps) ====
+  - name: Sesh switcher
+    key: space
+    command: run-shell "$HOME/.config/tmux/bin/sesh-connect.sh"
+  - name: Command prompt
+    key: ":"
+    command: command-prompt
+  - name: Last window
+    key: tab
+    command: last-window
+  - name: Last pane
+    key: "`"
+    command: last-pane
+  - separator: true
+
+  # ==== Splits (divide). d = down, D = right. ====
+  - name: Divide down
+    key: d
+    command: "splitw -v -c #{pane_current_path}"
+  - name: Divide right
+    key: D
+    command: "splitw -h -c #{pane_current_path}"
+  - separator: true
+
+  # ==== Window cycle (transient). Pane nav handled by vim-tmux-navigator (C-hjkl). ====
+  - name: Prev window
+    key: "{"
+    command: previous-window
+    transient: true
+  - name: Next window
+    key: "}"
+    command: next-window
+    transient: true
+  - separator: true
+
+  # ==== Common verbs ====
+  - name: New window
+    key: c
+    command: "neww -c #{pane_current_path}"
+  - name: New project window
+    key: n
+    command: run-shell "$HOME/.config/tmux/bin/new-window-at-root.sh"
+  - name: Zoom pane
+    key: z
+    macro: toggle-zoom
+  - name: Copy mode
+    key: "["
+    command: copy-mode
+  - name: Paste buffer
+    key: "]"
+    command: paste-buffer -p
+  - name: Detach
+    key: q
+    command: detach-client
+  - name: Reload config
+    key: r
+    macro: reload-config
+  - separator: true
+
+  # ==== Floating / tree / sidebar / picker (top-level aliases) ====
+  - name: Floax toggle
+    key: f
+    command: run-shell "~/.config/tmux/plugins/tmux-floax/scripts/floax.sh"
+  - name: Tree toggle
+    key: e
+    command: run-shell "~/.config/tmux/bin/treemux-toggle.sh Tab"
+  - name: Tree focus
+    key: T
+    command: run-shell "~/.config/tmux/bin/treemux-toggle.sh Bspace"
+  - name: Sidebar toggle (opensessions)
+    key: b
+    command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/toggle.sh"
+  - name: Pick from pane
+    key: u
+    command: run-shell -b "$HOME/.config/tmux/bin/extrakto.sh"
+  - name: Pick URLs
+    key: U
+    command: run-shell -b "$HOME/.config/tmux/bin/extrakto.sh url"
+  - name: Pick paths
+    key: P
+    command: run-shell -b "$HOME/.config/tmux/bin/extrakto.sh path"
+  - name: Notes popup
+    key: N
+    command: run-shell "$HOME/.config/tmux/bin/scratch-notes.sh"
+  - name: Claude ESP toggle
+    key: E
+    command: run-shell "$HOME/.config/tmux/bin/claude-esp-toggle.sh"
+  - separator: true
+
+  # ==== Submenus ====
+  - name: +Windows
+    key: w
+    menu:
+      - name: Choose
+        key: w
+        command: choose-tree -Zw
+      - name: Next
+        key: n
+        command: next-window
+        transient: true
+      - name: Previous
+        key: p
+        command: previous-window
+        transient: true
+      - name: New
+        key: c
+        command: "neww -c #{pane_current_path}"
+      - name: Find
+        key: "/"
+        command: command-prompt "find-window -- '%%'"
+      - separator: true
+      - name: Rename
+        key: r
+        command: command-prompt -I "#W" "renamew -- \"%%\""
+      - name: Move to index
+        key: "."
+        command: command-prompt -p "move window to:" "move-window -t '%%'"
+      - name: Swap left
+        key: "<"
+        command: swap-window -t :-1
+        transient: true
+      - name: Swap right
+        key: ">"
+        command: swap-window -t :+1
+        transient: true
+      - separator: true
+      - name: Kill
+        key: X
+        command: 'confirm -p "Kill window #W? (y/n)" killw'
+      - separator: true
+      - name: Window 1
+        key: "1"
+        command: "select-window -t :1"
+      - name: Window 2
+        key: "2"
+        command: "select-window -t :2"
+      - name: Window 3
+        key: "3"
+        command: "select-window -t :3"
+      - name: Window 4
+        key: "4"
+        command: "select-window -t :4"
+      - name: Window 5
+        key: "5"
+        command: "select-window -t :5"
+      - name: Window 6
+        key: "6"
+        command: "select-window -t :6"
+      - name: Window 7
+        key: "7"
+        command: "select-window -t :7"
+      - name: Window 8
+        key: "8"
+        command: "select-window -t :8"
+      - name: Window 9
+        key: "9"
+        command: "select-window -t :9"
+      - name: Window 0
+        key: "0"
+        command: "select-window -t :0"
+      - separator: true
+      - name: +Layout
+        key: l
+        menu:
+          - name: Next
+            key: l
+            command: nextl
+            transient: true
+          - name: Tiled
+            key: t
+            command: selectl tiled
+          - name: Even horizontal
+            key: h
+            command: selectl even-horizontal
+          - name: Even vertical
+            key: v
+            command: selectl even-vertical
+          - name: Main horizontal
+            key: H
+            command: selectl main-horizontal
+          - name: Main vertical
+            key: V
+            command: selectl main-vertical
+          - separator: true
+          - name: Rotate
+            key: r
+            command: rotatew
+            transient: true
+          - name: Rotate reverse
+            key: R
+            command: rotatew -D
+            transient: true
+
+  - name: +Panes
+    key: p
+    menu:
+      - name: Show numbers
+        key: p
+        command: display-panes
+      - name: Choose
+        key: c
+        command: "choose-tree -Z -f \"##{==:##{session_id},#{session_id}}\""
+      - separator: true
+      - name: Swap left
+        key: H
+        command: swapp -t "{left-of}"
+      - name: Swap down
+        key: J
+        command: swapp -t "{down-of}"
+      - name: Swap up
+        key: K
+        command: swapp -t "{up-of}"
+      - name: Swap right
+        key: L
+        command: swapp -t "{right-of}"
+      - separator: true
+      - name: Resize left
+        key: h
+        command: resizep -L 5
+        transient: true
+      - name: Resize down
+        key: j
+        command: resizep -D 5
+        transient: true
+      - name: Resize up
+        key: k
+        command: resizep -U 5
+        transient: true
+      - name: Resize right
+        key: l
+        command: resizep -R 5
+        transient: true
+      - separator: true
+      - name: Break to new window
+        key: "!"
+        command: break-pane
+      - name: Join from window
+        key: "@"
+        command: command-prompt -p "join pane from:" "join-pane -s '%%'"
+      - name: Respawn
+        key: R
+        command: 'confirm -p "Respawn pane? (y/n)" "respawnp -k -c #{pane_current_path}"'
+      - name: Capture to buffer
+        key: C
+        command: capture-pane
+      - separator: true
+      - name: Mark
+        key: m
+        command: selectp -m
+      - name: Unmark
+        key: M
+        command: selectp -M
+      - separator: true
+      - name: Toggle dark theme
+        key: d
+        command: 'if -F "#{@pane_dark}" "select-pane -P default ; set -p @pane_dark \"\"" "select-pane -P bg=#000000,fg=#ffffff ; set -p @pane_dark 1"'
+      - separator: true
+      - name: Kill
+        key: X
+        command: 'confirm -p "Kill pane #P? (y/n)" killp'
+      - name: Kill others
+        key: o
+        command: 'confirm -p "Kill other panes? (y/n)" "killp -a"'
+
+  - name: +Sessions
+    key: s
+    menu:
+      - name: Choose
+        key: s
+        command: choose-tree -Zs
+      - name: New
+        key: N
+        command: command-prompt -p "new session:" "new-session -s '%%'"
+      - name: Rename
+        key: r
+        command: command-prompt -I "#S" "rename-session -- \"%%\""
+      - separator: true
+      - name: Next
+        key: n
+        command: switch-client -n
+        transient: true
+      - name: Previous
+        key: p
+        command: switch-client -p
+        transient: true
+      - name: Last
+        key: l
+        command: switch-client -l
+      - separator: true
+      - name: Detach
+        key: d
+        command: detach-client
+      - separator: true
+      - name: Save (resurrect)
+        key: S
+        command: run-shell "$HOME/.config/tmux/plugins/tmux-resurrect/scripts/save.sh"
+      - name: Restore (resurrect)
+        key: R
+        command: run-shell "$HOME/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh"
+      - separator: true
+      - name: Kill
+        key: X
+        command: 'confirm -p "Kill session #S? (y/n)" kill-session'
+
+  - name: +Copy/Buffers
+    key: y
+    menu:
+      - name: Enter copy mode
+        key: y
+        command: copy-mode
+      - name: Paste
+        key: p
+        command: paste-buffer -p
+      - separator: true
+      - name: Choose buffer
+        key: b
+        command: choose-buffer -Z
+      - name: List
+        key: l
+        command: list-buffers
+      - name: Save to file
+        key: s
+        command: command-prompt -p "save buffer to:" "save-buffer '%%'"
+      - name: Delete most recent
+        key: "-"
+        command: delete-buffer
+
+  - name: +Toggle
+    key: t
+    menu:
+      - name: Mouse
+        key: m
+        macro: toggle-mouse
+      - name: Status bar
+        key: s
+        macro: toggle-status
+      - name: Synchronize panes
+        key: y
+        macro: toggle-sync
+      - name: Activity monitor
+        key: a
+        macro: toggle-activity
+
+  - name: +Opensessions
+    key: o
+    menu:
+      - name: Focus sidebar
+        key: s
+        command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/focus.sh"
+      - name: Toggle sidebar
+        key: t
+        command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/toggle.sh"
+      - name: Even horizontal
+        key: e
+        command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/even-horizontal.sh #{window_id} #{pane_id}"
+      - separator: true
+      - name: +Jump to session
+        key: j
+        menu:
+          - name: Session 1
+            key: "1"
+            command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/switch-index.sh 1"
+          - name: Session 2
+            key: "2"
+            command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/switch-index.sh 2"
+          - name: Session 3
+            key: "3"
+            command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/switch-index.sh 3"
+          - name: Session 4
+            key: "4"
+            command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/switch-index.sh 4"
+          - name: Session 5
+            key: "5"
+            command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/switch-index.sh 5"
+          - name: Session 6
+            key: "6"
+            command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/switch-index.sh 6"
+          - name: Session 7
+            key: "7"
+            command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/switch-index.sh 7"
+          - name: Session 8
+            key: "8"
+            command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/switch-index.sh 8"
+          - name: Session 9
+            key: "9"
+            command: run-shell "sh $HOME/.config/tmux/plugins/opensessions/integrations/tmux-plugin/scripts/switch-index.sh 9"
+
+  - name: +Floax
+    key: F
+    menu:
+      - name: Toggle popup
+        key: f
+        command: run-shell "~/.config/tmux/plugins/tmux-floax/scripts/floax.sh"
+      - separator: true
+      - name: Zoom in
+        key: "+"
+        command: run-shell "~/.config/tmux/plugins/tmux-floax/scripts/zoom-options.sh in"
+      - name: Zoom out
+        key: "-"
+        command: run-shell "~/.config/tmux/plugins/tmux-floax/scripts/zoom-options.sh out"
+      - name: Fullscreen
+        key: z
+        command: run-shell "~/.config/tmux/plugins/tmux-floax/scripts/zoom-options.sh full"
+      - name: Reset size
+        key: r
+        command: run-shell "~/.config/tmux/plugins/tmux-floax/scripts/zoom-options.sh reset"
+      - separator: true
+      - name: Embed (pop out to window)
+        key: e
+        command: run-shell "~/.config/tmux/plugins/tmux-floax/scripts/embed.sh embed"
+      - name: Lock size
+        key: l
+        command: run-shell "~/.config/tmux/plugins/tmux-floax/scripts/zoom-options.sh lock"
+      - name: Unlock size
+        key: u
+        command: run-shell "~/.config/tmux/plugins/tmux-floax/scripts/zoom-options.sh unlock"
+
+  - name: +Plugins (TPM)
+    key: g
+    menu:
+      - name: Install
+        key: i
+        command: run-shell $TMUX_PLUGIN_MANAGER_PATH/tpm/bindings/install_plugins
+      - name: Update
+        key: u
+        command: run-shell $TMUX_PLUGIN_MANAGER_PATH/tpm/bindings/update_plugins
+      - name: Clean
+        key: c
+        command: run-shell $TMUX_PLUGIN_MANAGER_PATH/tpm/bindings/clean_plugins
+
+  - name: +Misc
+    key: M
+    menu:
+      - name: Clock mode
+        key: t
+        command: clock-mode
+      - name: Customize
+        key: c
+        command: customize-mode -Z
+      - name: Show messages
+        key: m
+        command: show-messages
+      - name: Healthcheck
+        key: h
+        command: display-popup -E -w 70% -h 70% "$HOME/.config/tmux/bin/check-deps.sh --hold"
+      - separator: true
+      - name: Choose client
+        key: C
+        command: choose-client -Z
+      - name: List clients
+        key: l
+        command: list-clients
+      - name: Refresh client
+        key: r
+        command: refresh-client
+      - name: Suspend client
+        key: Z
+        command: suspend-client
+      - separator: true
+      - name: Kill tmux server
+        key: K
+        command: 'confirm -p "Kill entire tmux server? (y/n)" kill-server'
+  - separator: true
+  - name: Help (show bindings)
+    key: "?"
+    command: display-popup -E -w 85% -h 85% "less $HOME/.config/tmux/plugins/tmux-which-key/config.yaml"

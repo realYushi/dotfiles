@@ -17,10 +17,14 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# Relocate zcompdump into the XDG cache (read by zim's completion module).
+zstyle ':zim:completion' dumpfile "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
 
 # History (override zim's environment module defaults).
+HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=100000
 SAVEHIST=100000
 setopt EXTENDED_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_VERIFY SHARE_HISTORY

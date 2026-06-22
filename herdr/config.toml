@@ -1,0 +1,6 @@
+onboarding = false
+[theme]
+name = "catppuccin-latte"
+
+[experimental]
+pane_history = false

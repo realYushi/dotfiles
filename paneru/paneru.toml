@@ -1,5 +1,6 @@
 [options]
 focus_follows_mouse = true
+mouse_follows_focus = false
 horizontal_mouse_warp = -1
 
 [bindings]
@@ -26,7 +27,3 @@ window_virtualmove_south = "alt + shift - o"
 
 [swipe.scroll]
 modifier = "alt"
-
-[decorations.inactive.dim]
-opacity = 0.3
-color = "#000000"

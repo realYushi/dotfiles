@@ -9,10 +9,13 @@
 	rebase = true
 [fetch]
 	prune = true
+	pruneTags = true
 [rebase]
 	autoStash = true
+	updateRefs = true
 [core]
 	editor = nvim
+	pager = delta
 [delta]
 	features = catppuccin-latte
 [delta "catppuccin-latte"]
@@ -41,3 +44,7 @@
 	syntax-theme = Catppuccin Latte
 [merge]
 	conflictstyle = zdiff3
+[rerere]
+	enabled = true
+[interactive]
+	diffFilter = delta --color-only

@@ -76,6 +76,7 @@ zsh/.zim/
 **/node_modules/
 raycast-x/extensions/node_modules
 browseruse/
+herdr/plugins/
 tmux/plugins/
 
 # Machine-local overrides and app state
@@ -92,3 +93,4 @@ cliamp/ytmusic_classification.json
 
 # Known credential files
 cliamp/ytmusic_credentials.json
+smart-search/config.json

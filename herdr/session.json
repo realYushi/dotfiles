@@ -6,43 +6,40 @@
       "custom_name": null,
       "identity_cwd": "/Users/yushi/.config",
       "public_pane_numbers": {
-        "3": 2,
-        "1": 1
+        "4": 7,
+        "5": 8
       },
-      "next_public_pane_number": 3,
+      "next_public_pane_number": 9,
       "public_tab_numbers": [
-        1,
-        2
+        1
       ],
-      "next_public_tab_number": 3,
+      "next_public_tab_number": 4,
       "tabs": [
         {
           "custom_name": null,
           "layout": {
-            "Pane": 1
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Pane": 4
+              },
+              "second": {
+                "Pane": 5
+              }
+            }
           },
           "panes": {
-            "1": {
+            "4": {
+              "cwd": "/Users/yushi/.config"
+            },
+            "5": {
               "cwd": "/Users/yushi/.config"
             }
           },
           "zoomed": false,
-          "focused": 1,
-          "root_pane": 1
-        },
-        {
-          "custom_name": null,
-          "layout": {
-            "Pane": 3
-          },
-          "panes": {
-            "3": {
-              "cwd": "/Users/yushi/.config"
-            }
-          },
-          "zoomed": false,
-          "focused": 3,
-          "root_pane": 3
+          "focused": 5,
+          "root_pane": 4
         }
       ],
       "active_tab": 0

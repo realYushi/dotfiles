@@ -1,7 +1,10 @@
 {
-  "lastChangelogVersion": "0.79.9",
+  "lastChangelogVersion": "0.80.2",
   "theme": "light",
-  "defaultProvider": "zai",
-  "defaultModel": "glm-5.1",
-  "defaultThinkingLevel": "medium"
+  "defaultProvider": "9router",
+  "defaultModel": "cx/gpt-5.5",
+  "defaultThinkingLevel": "medium",
+  "packages": [
+    "npm:pi-9router-ext"
+  ]
 }

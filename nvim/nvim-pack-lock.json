@@ -25,7 +25,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
-      "rev": "c995bbacf8229dc096ec1c3d60f8531059c86c1b",
+      "rev": "c69859c1d5427ab5fc7ed12380ab521b4e336691",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "harpoon": {
@@ -138,7 +138,7 @@
       "src": "https://github.com/gbprod/yanky.nvim"
     },
     "yazi.nvim": {
-      "rev": "3c7229b0b86fe7a6fadcb89d66ea57423cc21904",
+      "rev": "66a818b149f817ec8576021d5a696825a29ebf10",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }

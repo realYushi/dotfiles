@@ -1,0 +1,170 @@
+[
+  {
+    "plugin_id": "herdr-file-viewer",
+    "name": "herdr-file-viewer",
+    "version": "1.3.0",
+    "min_herdr_version": "0.7.0",
+    "description": "A git-aware, read-only file viewer: a keyboard-driven TUI in a herdr split pane.",
+    "manifest_path": "/Users/yushi/.config/herdr/plugins/github/herdr-file-viewer-c993314e2614/herdr-plugin.toml",
+    "plugin_root": "/Users/yushi/.config/herdr/plugins/github/herdr-file-viewer-c993314e2614",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "command": [
+          "/bin/sh",
+          "scripts/fetch-or-build.sh"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "open-file-viewer",
+        "title": "Open file viewer",
+        "description": "Open the git-aware file viewer in a split pane beside the current work.",
+        "command": [
+          "bash",
+          "scripts/open-file-viewer.sh"
+        ]
+      },
+      {
+        "id": "open-file-viewer-tab",
+        "title": "Open file viewer (tab)",
+        "description": "Open the git-aware file viewer in its own tab (switch to it if already open).",
+        "command": [
+          "bash",
+          "scripts/open-file-viewer-tab.sh"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "file-viewer",
+        "title": "Files",
+        "placement": "split",
+        "command": [
+          "./target/release/herdr-file-viewer"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "smarzban",
+      "repo": "herdr-file-viewer",
+      "resolved_commit": "734fa941dc284d28ddc9c96265e3d0a39245c764",
+      "managed_path": "/Users/yushi/.config/herdr/plugins/github/herdr-file-viewer-c993314e2614",
+      "installed_unix_ms": 1782289916113
+    }
+  },
+  {
+    "plugin_id": "hunk.diff",
+    "name": "Hunk Diff",
+    "version": "0.1.0",
+    "min_herdr_version": "0.7.0",
+    "description": "Open Hunk diffs from Herdr in a split pane or tab.",
+    "manifest_path": "/Users/yushi/.config/herdr/plugins/github/hunk.diff-aac64676eddc/herdr-plugin.toml",
+    "plugin_root": "/Users/yushi/.config/herdr/plugins/github/hunk.diff-aac64676eddc",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "actions": [
+      {
+        "id": "branch-split",
+        "title": "Hunk branch diff in split",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "python3",
+          "hunk_herdr.py",
+          "branch",
+          "split"
+        ]
+      },
+      {
+        "id": "branch-tab",
+        "title": "Hunk branch diff in tab",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "python3",
+          "hunk_herdr.py",
+          "branch",
+          "tab"
+        ]
+      },
+      {
+        "id": "staged-split",
+        "title": "Hunk staged diff in split",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "python3",
+          "hunk_herdr.py",
+          "staged",
+          "split"
+        ]
+      },
+      {
+        "id": "staged-tab",
+        "title": "Hunk staged diff in tab",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "python3",
+          "hunk_herdr.py",
+          "staged",
+          "tab"
+        ]
+      },
+      {
+        "id": "worktree-split",
+        "title": "Hunk worktree diff in split",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "python3",
+          "hunk_herdr.py",
+          "worktree",
+          "split"
+        ]
+      },
+      {
+        "id": "worktree-tab",
+        "title": "Hunk worktree diff in tab",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "python3",
+          "hunk_herdr.py",
+          "worktree",
+          "tab"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "edmundmiller",
+      "repo": "herdr-plugin-hunk",
+      "resolved_commit": "11ba5dcca4358203ca68f160becf6870cf016c18",
+      "managed_path": "/Users/yushi/.config/herdr/plugins/github/hunk.diff-aac64676eddc",
+      "installed_unix_ms": 1782292425354
+    }
+  }
+]

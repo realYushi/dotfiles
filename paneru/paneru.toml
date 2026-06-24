@@ -2,6 +2,9 @@
 focus_follows_mouse = true
 mouse_follows_focus = false
 horizontal_mouse_warp = -1
+animation_speed = 25
+preset_column_widths = [0.30, 0.50, 0.70]
+reap_empty_workspaces = true
 
 [bindings]
 window_focus_west = "alt - h"
@@ -19,11 +22,13 @@ window_stack = "alt - ["
 window_unstack = "alt - ]"
 window_nextdisplay = "alt + shift - tab"
 window_resize = "alt - r"
-window_snap = "alt - p"
-window_virtual_north = "alt - i"
-window_virtual_south = "alt - o"
-window_virtualmove_north = "alt + shift - i"
-window_virtualmove_south = "alt + shift - o"
+window_togglefloatlayer = "alt - p"
+window_virtual_north = "alt - u"
+window_virtual_south = "alt - i"
+window_virtualmove_north = "alt + shift - u"
+window_virtualmove_south = "alt + shift - i"
+
 
 [swipe.scroll]
 modifier = "alt"
+

@@ -5,7 +5,8 @@
       "lifecycle": "eager",
       "headers": {
         "X-Profile-Id": "9182a09f-e939-4da2-a917-ec4d85140937"
-      }
+      },
+      "directTools": true
     }
   }
 }

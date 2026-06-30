@@ -17,7 +17,8 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Disable macOS per-session save so ~/.zsh_sessions is never created.
 export SHELL_SESSIONS_DISABLE=1
-
+export PATH="/Users/yushi/.local/share/../bin:$PATH"
+export PATH="/Users/yushi/.cache/.bun/bin:$PATH"
 # --- ncurses: relocate user terminfo out of $HOME --------------------
 # Keep a terminfo path pre-set by the terminal emulator (e.g. Ghostty's
 # bundled xterm-ghostty) so the terminal keeps working, while making the

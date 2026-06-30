@@ -3,8 +3,32 @@
   "theme": "light",
   "defaultProvider": "9router",
   "defaultModel": "cx/gpt-5.5",
-  "defaultThinkingLevel": "medium",
+  "defaultThinkingLevel": "high",
   "packages": [
-    "npm:pi-9router-ext"
-  ]
+    "npm:pi-9router-ext",
+    "npm:pi-mcp-adapter",
+    "npm:@juicesharp/rpiv-ask-user-question",
+    "npm:@juicesharp/rpiv-todo",
+    "npm:@tintinweb/pi-subagents",
+    "npm:@ff-labs/pi-fff",
+    "npm:pi-tool-display",
+    "npm:cc-safety-net",
+    "npm:pi-observational-memory",
+    "npm:pi-nano-context"
+  ],
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "hideThinkingBlock": true,
+  "collapseChangelog": true,
+  "quietStartup": true,
+  "enableInstallTelemetry": false,
+  "defaultProjectTrust": "always",
+  "observational-memory": {
+    "model": {
+      "provider": "9router",
+      "id": "cx/gpt-5.4-mini",
+      "thinking": "low"
+    }
+  }
 }

@@ -1,0 +1,22 @@
+[1]
+monitor = "main"
+
+[2]
+monitor = "main"
+
+[3]
+monitor = "main"
+
+[4]
+monitor = "main"
+
+[5]
+monitor = "main"
+
+[6]
+displayName = "❤️"
+monitor = "secondary"
+
+[7]
+displayName = "🚀"
+monitor = "secondary"

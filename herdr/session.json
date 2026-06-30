@@ -6,70 +6,33 @@
       "custom_name": null,
       "identity_cwd": "/Users/yushi/.config",
       "public_pane_numbers": {
-        "4": 7,
-        "5": 8
+        "1": 7
       },
-      "next_public_pane_number": 9,
+      "next_public_pane_number": 17,
       "public_tab_numbers": [
         1
       ],
-      "next_public_tab_number": 4,
+      "next_public_tab_number": 6,
       "tabs": [
         {
           "custom_name": null,
           "layout": {
-            "Split": {
-              "direction": "Horizontal",
-              "ratio": 0.5,
-              "first": {
-                "Pane": 4
-              },
-              "second": {
-                "Pane": 5
+            "Pane": 1
+          },
+          "panes": {
+            "1": {
+              "cwd": "/Users/yushi/.config",
+              "agent_session": {
+                "source": "herdr:pi",
+                "agent": "pi",
+                "kind": "path",
+                "value": "/Users/yushi/.config/pi/agent/sessions/--Users-yushi-.config--/2026-06-30T03-39-35-930Z_019f169c-647a-7b60-b565-7199ee690138.jsonl"
               }
             }
           },
-          "panes": {
-            "4": {
-              "cwd": "/Users/yushi/.config"
-            },
-            "5": {
-              "cwd": "/Users/yushi/.config"
-            }
-          },
           "zoomed": false,
-          "focused": 5,
-          "root_pane": 4
-        }
-      ],
-      "active_tab": 0
-    },
-    {
-      "id": "w2",
-      "custom_name": null,
-      "identity_cwd": "/Users/yushi/.config",
-      "public_pane_numbers": {
-        "2": 1
-      },
-      "next_public_pane_number": 2,
-      "public_tab_numbers": [
-        1
-      ],
-      "next_public_tab_number": 2,
-      "tabs": [
-        {
-          "custom_name": null,
-          "layout": {
-            "Pane": 2
-          },
-          "panes": {
-            "2": {
-              "cwd": "/Users/yushi/.config"
-            }
-          },
-          "zoomed": false,
-          "focused": 2,
-          "root_pane": 2
+          "focused": 1,
+          "root_pane": 1
         }
       ],
       "active_tab": 0
@@ -77,8 +40,7 @@
   ],
   "active": 0,
   "selected": 0,
-  "agent_panel_scope": "AllWorkspaces",
-  "sidebar_width": 26,
+  "sidebar_width": 21,
   "sidebar_section_split": 0.5,
   "collapsed_space_keys": []
 }

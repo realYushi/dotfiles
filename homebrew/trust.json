@@ -2,6 +2,8 @@
   "trustedtaps": [
     "barutsrb/tap",
     "fujacob/cotabby",
+    "guria/tap",
+    "muxy-app/tap",
     "tw93/tap"
   ]
 }

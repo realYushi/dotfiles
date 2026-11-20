@@ -2,7 +2,7 @@ core:
   trash:
     strategy: auto
     home_fallback: true
-    gomi_dir: /Users/yushi/.gomi
+    gomi_dir: /Users/yushi.cui/.gomi
     forbidden_paths:
     - $HOME/.local/share/Trash
     - $HOME/.trash

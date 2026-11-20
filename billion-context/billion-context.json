@@ -1,0 +1,20 @@
+{
+  "compress": {
+    "externalSummary": {
+      "enabled": false,
+      "targets": [
+        "magpie/commandcode/deepseek/deepseek-v4.1-flash-fast"
+      ]
+    }
+  },
+  "providers": {
+    "magpie": {
+      "api": "openai",
+      "baseUrl": "http://127.0.0.1:3425/v1",
+      "credentialRef": "magpie",
+      "models": {
+        "commandcode/deepseek/deepseek-v4.1-flash-fast": {}
+      }
+    }
+  }
+}

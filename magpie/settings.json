@@ -1,0 +1,27 @@
+{
+  "theme": "system",
+  "lang": "zh",
+  "tray": "panel",
+  "currency": "usd",
+  "dockSettled": true,
+  "otel": {},
+  "sessionReads": {
+    "asked": true,
+    "all": true,
+    "agents": {
+      "dsh": true,
+      "pi": true
+    }
+  },
+  "updateEvery": 360,
+  "trayUsageEvery": 3,
+  "textSize": 100,
+  "window": [
+    954,
+    1042
+  ],
+  "windowAt": [
+    952,
+    34
+  ]
+}

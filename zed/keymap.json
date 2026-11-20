@@ -1,0 +1,50 @@
+// Zed keymap — https://zed.dev/docs/key-bindings
+// Your personal overrides go here; defaults stay untouched.
+[
+  // --- File / project -----------------------------------------------------
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-shift-e": "project_panel::ToggleFocus",
+      "cmd-b": "project_panel::ToggleFocus",
+      "cmd-shift-g": "git_panel::ToggleFocus",
+      "cmd-shift-o": "projects::OpenRecent",
+      "cmd-shift-p": "command_palette::Toggle",
+      "cmd-p": "file_finder::Toggle"
+    }
+  },
+  // --- Terminal -----------------------------------------------------------
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-`": "terminal_panel::ToggleFocus"
+    }
+  },
+  // --- Editor: quality of life -------------------------------------------
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-d": "editor::SelectNext",
+      "cmd-shift-l": "editor::SelectAllMatches",
+      "cmd-alt-down": "editor::AddSelectionBelow",
+      "cmd-alt-up": "editor::AddSelectionAbove",
+      "cmd-shift-k": "editor::DeleteLine",
+      "alt-up": "editor::MoveLineUp",
+      "alt-down": "editor::MoveLineDown",
+      "cmd-/": "editor::ToggleComments",
+      "cmd-shift-f": "buffer_search::Deploy",
+      "cmd-alt-f": "editor::Format"
+    }
+  },
+  // --- Project panel ------------------------------------------------------
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "shift-a": "project_panel::NewDirectory",
+      "d": "project_panel::Delete",
+      "r": "project_panel::Rename",
+      "shift-r": "project_panel::RevealInFileManager"
+    }
+  }
+]

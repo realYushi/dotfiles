@@ -1,0 +1,39 @@
+{
+  "active": "sp76d7a5c5bf199b37fdf1eef3df27d404",
+  "spaces": {
+    "sp76d7a5c5bf199b37fdf1eef3df27d404": "tb99a3c009f036a562e683aeace7f21f49"
+  },
+  "tabs": {
+    "tb32e13ac025f0894b7ae08c2129621e0a": {
+      "focused": "p0923304144fa7376c7ae77c121d1de19",
+      "before": [],
+      "zoomed": null,
+      "settled": null
+    },
+    "tb99a3c009f036a562e683aeace7f21f49": {
+      "focused": "p680d74461e50c8db90c3d66f55acf5b3",
+      "before": [],
+      "zoomed": null,
+      "settled": null
+    }
+  },
+  "recent": [],
+  "attention": {
+    "t1": {
+      "word": "done",
+      "seen": true
+    },
+    "t2": {
+      "word": null,
+      "seen": true
+    },
+    "t3": {
+      "word": null,
+      "seen": true
+    },
+    "t4": {
+      "word": null,
+      "seen": true
+    }
+  }
+}

@@ -1,5 +1,5 @@
 [user]
-	name = Yushi Cui
+	name = yushi.cui
 	email = realyushi@gmail.com
 [init]
 	defaultBranch = main
@@ -14,9 +14,11 @@
 	autoStash = true
 	updateRefs = true
 [core]
-	editor = nvim
+	editor = zed --wait
 	pager = delta
 [delta]
+	navigate = true
+	line-numbers = true
 	features = catppuccin-latte
 [delta "catppuccin-latte"]
 	blame-palette = "#eff1f5 #e6e9ef #dce0e8 #ccd0da #bcc0cc"
@@ -48,3 +50,9 @@
 	enabled = true
 [interactive]
 	diffFilter = delta --color-only
+[diff]
+	colorMoved = default
+[status]
+	showUntrackedFiles = all
+[column]
+	ui = auto

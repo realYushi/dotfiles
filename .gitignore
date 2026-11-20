@@ -2,95 +2,44 @@
 .DS_Store
 **/.DS_Store
 
-# Local agent/editor state
+# Nested repos and vendored deps
+**/.git/
+**/node_modules/
+
+# --- Local editor/agent state ---------------------------------------------
 .pi/
 **/.claude/
 **/.zed/
-**/.git/
+zed/keymap.json.bak
 
-# Keep only hand-maintained agent config, not auth/history/cache
-claude/**
-!claude/CLAUDE.md
-!claude/ccline/
-claude/ccline/**
-!claude/ccline/config.toml
-!claude/ccline/models.toml
-!claude/ccline/themes/
-claude/ccline/themes/**
-!claude/ccline/themes/cometix.toml
+# --- GUI app config dirs: keep settings, drop internals --------------------
+# These apps store binaries, caches, session state and update payloads in
+# ~/.config. Only the hand-edited settings files are worth backing up.
+1Password/**
+!1Password/README.md
 
-codex/**
-!codex/AGENTS.md
-!codex/RTK.md
-!codex/config.toml
-!codex/settings.json
-!codex/hooks.json
-!codex/commands/
-codex/commands/**
-!codex/commands/*.md
-!codex/agents/
-codex/agents/**
-!codex/agents/templates/
-codex/agents/templates/**
-!codex/agents/templates/*.md
-!codex/rules/
-codex/rules/**
-!codex/rules/**/
-!codex/rules/**/*.md
-!codex/mcp/
-codex/mcp/**
-!codex/mcp/servers.template.json
-!codex/mcp/profiles/
-codex/mcp/profiles/**
-!codex/mcp/profiles/*.json
-!codex/config/
-codex/config/**
-!codex/config/adapter-registry.json
+billion-context/**
+!billion-context/billion-context.json
 
-pi/**
-!pi/agent/
-pi/agent/**
-!pi/agent/APPEND_SYSTEM.md
-!pi/agent/mcp.json
-!pi/agent/settings.json
-!pi/agent/context-prune/
-pi/agent/context-prune/**
-!pi/agent/context-prune/settings.json
-!pi/agent/extensions/
-pi/agent/extensions/**
-!pi/agent/extensions/pi-rtk-optimizer/
-pi/agent/extensions/pi-rtk-optimizer/**
-!pi/agent/extensions/pi-rtk-optimizer/config.json
+herdr-app/**
+!herdr-app/settings.json
+!herdr-app/view.json
+!herdr-app/AGENTS.md
 
-# Caches, logs, and shell runtime state
+magpie/**
+!magpie/settings.json
+
+omniwm/**
+!omniwm/shell/shell.toml
+
+# --- Caches, logs, runtime state ------------------------------------------
 **/*.log
 **/.cache/
-mole/
 zsh/.zcompcache/
 zsh/.zcompdump
 zsh/.zcompdump.*
 zsh/.zsh_history
 zsh/.zim/
 
-# Vendored dependencies and plugin checkouts
-**/node_modules/
-raycast-x/extensions/node_modules
-browseruse/
-herdr/plugins/
-tmux/plugins/
-
-# Machine-local overrides and app state
-swiftpm/
-tmux/tmux.local.conf
-opencode/peon-ping/.state.json
-raycast/extensions/
-zed/prompts/
-ipython/profile_default/history.sqlite
-cliamp/.telemetry_id
-cliamp/resume.json
-cliamp/ytmusic_cache.json
-cliamp/ytmusic_classification.json
-
-# Known credential files
-cliamp/ytmusic_credentials.json
-smart-search/config.json
+# --- Machine-local overrides ----------------------------------------------
+**/*.local.*
